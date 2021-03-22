@@ -50,7 +50,7 @@
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="ni ni-user-run"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                         <span>{{ __('Logout') }}</span>
                     </a>
                 </div>
