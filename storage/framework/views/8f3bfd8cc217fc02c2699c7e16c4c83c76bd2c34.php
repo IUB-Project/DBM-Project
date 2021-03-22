@@ -32,12 +32,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo e(route('register')); ?>">
-                        <i class="ni ni-circle-08"></i>
-                        <span class="nav-link-inner--text"><?php echo e(__('Register')); ?></span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo e(route('login')); ?>">
                         <i class="ni ni-key-25"></i>
                         <span class="nav-link-inner--text"><?php echo e(__('Login')); ?></span>
@@ -52,4 +46,5 @@
             </ul>
         </div>
     </div>
-</nav><?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/navbars/navs/guest.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/navbars/navs/guest.blade.php ENDPATH**/ ?>

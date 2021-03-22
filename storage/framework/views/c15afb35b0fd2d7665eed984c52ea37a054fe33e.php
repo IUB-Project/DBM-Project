@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('content'); ?>
     <?php echo $__env->make('layouts.headers.guest', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -6,25 +8,11 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
-                        <div class="text-muted text-center mt-2 mb-3"><small><?php echo e(__('Sign in with')); ?></small></div>
-                        <div class="btn-wrapper text-center">
-                            <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="<?php echo e(asset('argon')); ?>/img/icons/common/github.svg"></span>
-                                <span class="btn-inner--text"><?php echo e(__('Github')); ?></span>
-                            </a>
-                            <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="<?php echo e(asset('argon')); ?>/img/icons/common/google.svg"></span>
-                                <span class="btn-inner--text"><?php echo e(__('Google')); ?></span>
-                            </a>
-                        </div>
-                    </div>
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>
-                                    Create new account OR Sign in with these credentials:
-                                    <br>
-                                    Username <strong>admin@argon.com</strong> Password: <strong>secret</strong>
-                            </small>
+                            <h1>
+                                    login here
+                            </h1>
                         </div>
                         <form role="form" method="POST" action="<?php echo e(route('login')); ?>">
                             <?php echo csrf_field(); ?>
@@ -64,6 +52,7 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary my-4"><?php echo e(__('Sign in')); ?></button>
                             </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -74,11 +63,6 @@
                                 <small><?php echo e(__('Forgot password?')); ?></small>
                             </a>
                         <?php endif; ?>
-                    </div>
-                    <div class="col-6 text-right">
-                        <a href="<?php echo e(route('register')); ?>" class="text-light">
-                            <small><?php echo e(__('Create new account')); ?></small>
-                        </a>
                     </div>
                 </div>
             </div>

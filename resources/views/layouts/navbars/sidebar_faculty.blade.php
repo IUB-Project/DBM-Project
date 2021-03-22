@@ -5,8 +5,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="<?php echo e(route('home')); ?>">
-            <img src="<?php echo e(asset('argon')); ?>/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a class="navbar-brand pt-0" href="{{ route('home') }}">
+            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -14,35 +14,35 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="<?php echo e(asset('argon')); ?>/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
                         </span>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0"><?php echo e(__('Welcome!')); ?></h6>
+                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                    <a href="<?php echo e(route('profile.edit')); ?>" class="dropdown-item">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span><?php echo e(__('My profile')); ?></span>
+                        <span>{{ __('My profile') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span><?php echo e(__('Settings')); ?></span>
+                        <span>{{ __('Settings') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
-                        <span><?php echo e(__('Activity')); ?></span>
+                        <span>{{ __('Activity') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-support-16"></i>
-                        <span><?php echo e(__('Support')); ?></span>
+                        <span>{{ __('Support') }}</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" onclick="event.preventDefault();
+                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span><?php echo e(__('Logout')); ?></span>
+                        <span>{{ __('Logout') }}</span>
                     </a>
                 </div>
             </li>
@@ -53,8 +53,8 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="<?php echo e(route('home')); ?>">
-                            <img src="<?php echo e(asset('argon')); ?>/img/brand/blue.png">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('argon') }}/img/brand/blue.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -68,7 +68,7 @@
             <!-- Form -->
             <form class="mt-4 mb-3 d-md-none">
                 <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="<?php echo e(__('Search')); ?>" aria-label="Search">
+                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="{{ __('Search') }}" aria-label="Search">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
                             <span class="fa fa-search"></span>
@@ -79,29 +79,26 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('home')); ?>">
-                        <i class="ni ni-tv-2 text-primary"></i> <?php echo e(__('Dashboard')); ?>
-
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;"><?php echo e(__('Laravel Examples')); ?></span>
+                        <i class="fas fa-plus-square" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Enter Data') }}</span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('profile.edit')); ?>">
-                                    <?php echo e(__('User profile')); ?>
-
+                                <a class="nav-link" href="{{ route('profile.edit') }}">
+                                    {{ __('User profile') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('user.index')); ?>">
-                                    <?php echo e(__('User Management')); ?>
-
+                                <a class="nav-link" href="{{ route('user.index') }}">
+                                    {{ __('User Management') }}
                                 </a>
                             </li>
                         </ul>
@@ -109,19 +106,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('icons')); ?>">
-                        <i class="ni ni-planet text-blue"></i> <?php echo e(__('Icons')); ?>
-
+                    <a class="nav-link" href="{{ route('icons') }}">
+                        <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="<?php echo e(route('map')); ?>">
-                        <i class="ni ni-pin-3 text-orange"></i> <?php echo e(__('Maps')); ?>
-
+                    <a class="nav-link" href="{{ route('map') }}">
+                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('table')); ?>">
+                    <a class="nav-link" href="{{ route('table') }}">
                       <i class="ni ni-bullet-list-67 text-default"></i>
                       <span class="nav-link-text">Tables</span>
                     </a>
@@ -153,4 +148,3 @@
         </div>
     </div>
 </nav>
-<?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/navbars/sidebar.blade.php ENDPATH**/ ?>
