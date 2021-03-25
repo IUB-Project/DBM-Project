@@ -86,7 +86,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fas fa-plus-square" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Enter Data') }}</span>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Data Entry') }}</span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
@@ -107,18 +107,18 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">
-                        <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
+                        <i class="fas fa-archive text-black"></i> {{ __('Student Report') }}
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ route('map') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
+                        <i class="fas fa-archive text-grey"></i> {{ __('Course Report') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('table') }}">
-                      <i class="ni ni-bullet-list-67 text-default"></i>
-                      <span class="nav-link-text">Tables</span>
+                      <i class="fas fa-user-cog text-default"></i>
+                      <span class="nav-link-text">Account setting</span>
                     </a>
                 </li>
 
