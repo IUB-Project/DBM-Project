@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-        <title><?php echo e(config('app.name', 'Argon Dashboard')); ?></title>
+        <title><?php echo e(config('app.name', 'SPM Dashboard')); ?></title>
         <!-- Favicon -->
         <link href="<?php echo e(asset('argon')); ?>/img/brand/favicon.png" rel="icon" type="image/png">
         <!-- Fonts -->
@@ -25,9 +25,9 @@
             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                 <?php echo csrf_field(); ?>
             </form>
-            <?php echo $__env->make('layouts.navbars.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('layouts.navbars.sidebar_faculty', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php endif; ?>
-        
+
         <div class="main-content">
             <?php echo $__env->make('layouts.navbars.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->yieldContent('content'); ?>
@@ -39,10 +39,11 @@
 
         <script src="<?php echo e(asset('argon')); ?>/vendor/jquery/dist/jquery.min.js"></script>
         <script src="<?php echo e(asset('argon')); ?>/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        
+
         <?php echo $__env->yieldPushContent('js'); ?>
-        
+
         <!-- Argon JS -->
         <script src="<?php echo e(asset('argon')); ?>/js/argon.js?v=1.0.0"></script>
     </body>
-</html><?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/app.blade.php ENDPATH**/ ?>
