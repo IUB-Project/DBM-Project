@@ -11,7 +11,7 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
                             <h1>
-                                    login here
+                                    Sign in
                             </h1>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
