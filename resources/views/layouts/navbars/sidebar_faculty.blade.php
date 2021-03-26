@@ -106,7 +106,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('icons') }}">
+                    <a class="nav-link" href="{{ route('table') }}">
                         <i class="fas fa-archive text-black"></i> {{ __('Student Report') }}
                     </a>
                 </li>
