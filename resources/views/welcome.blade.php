@@ -6,7 +6,7 @@
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Welcome to Student Perfomance Monitor') }}</h1>
+                        <h1 class="text-white">{{ __('Welcome to Student Performance Monitoring System') }}</h1>
                     </div>
                 </div>
             </div>
