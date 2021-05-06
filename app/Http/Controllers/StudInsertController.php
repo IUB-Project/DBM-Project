@@ -46,9 +46,9 @@ class StudInsertController extends Controller {
 
    }
 
-   public function courselist(){
-       $courselist1= DB::table('course_t')->pluck('courseName');
-       var_dump($courselist1);
-       //return view('pages.tables', compact('courselist'));
-   }
+//    public function courselist(){
+//        $courselist1= DB::table('course_t')->pluck('courseName');
+//        var_dump($courselist1);
+//        //return view('pages.tables', compact('courselist'));
+//    }
 }

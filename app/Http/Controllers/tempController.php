@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class tempController extends Controller
 {
-    public function showcourse(){
-        $courselist = DB::table('course_t')->get();
-        //var_dump($courselist);
-        return view('temp', compact('courselist'));
-    }
+    // public function showcourse(){
+    //     $courselist = DB::table('course_t')->get();
+    //     //var_dump($courselist);
+    //     return view('temp', compact('courselist'));
+    // }
 
 
 }

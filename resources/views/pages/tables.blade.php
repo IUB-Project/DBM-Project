@@ -396,33 +396,6 @@
                    <tr>
                     <input type="text" name='questionNo' class="form-control" placeholder="Question No">
                 </tr>
-                {{-- @foreach ($courselist1 as $data){
-                    <tr>
-                        <td>{$data->courseName}</td>
-                        </tr>
-
-
-                    @endforeach --}}
-                {{-- <tr>
-                    <select class="form-control" name="product_id">
-
-
-
-                        <option>Select Product</option>
-
-
-
-                        @foreach ($courselist as $key => $value)
-
-                          <option value="{{ $key }}" {{ ( $value) }}>
-
-                              {{ $value }}
-
-                          </option>
-
-                        @endforeach
-                    </select>
-                        </tr> --}}
                <br/>
                    <tr>
                     <input type="text" name='achievedMark' class="form-control" placeholder="Marks Achieved">

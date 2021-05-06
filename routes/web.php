@@ -8,16 +8,18 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/temp', [App\Http\Controllers\tempController::class, 'showcourse'])->name('temp.showcourse');
-//Route::get('insert','StudInsertController@insertform');
+// Route::get('/temp', [App\Http\Controllers\tempController::class, 'showcourse'])->name('temp.showcourse');
+// Route::get('insert','StudInsertController@insertform');
 Route::post('create','StudInsertController@insert');
-//Route::post('create','assessmentController@insert');
+// Route::get('student-report','DataController@getCountries');
+// Route::post('create','assessmentController@insert');
 
 
 
 Route::get('/fd', function () {
     return view('faculty_dashboard');
 })->middleware('auth');
+
 
 
 
