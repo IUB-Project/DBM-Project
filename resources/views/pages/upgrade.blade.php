@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>SPM Dashboard</title>
+  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -39,7 +39,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="javascript:void(0)">
           <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
@@ -55,20 +55,20 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                    <i class="fas fa-archive text-black" style="color: #f4645f;"></i>
-                    <span class="nav-link-text" style="color: #f4645f;">{{ __('Assessment Records') }}</span>
+                    <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                    <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
                 </a>
 
                 <div class="collapse show" id="navbar-examples">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('table') }}">
-                                {{ __('Enter Assessment Data') }}
+                            <a class="nav-link" href="{{ route('profile.edit') }}">
+                                {{ __('User profile') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.index') }}">
-                                {{ __('Enter Assessment Data') }}
+                                {{ __('User Management') }}
                             </a>
                         </li>
                     </ul>
@@ -76,26 +76,57 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('table') }}">
-                <i class="fas fa-archive text-black"></i> {{ __('Assessment Records') }}
+                <a class="nav-link" href="{{ route('icons') }}">
+                    <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
                 </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="{{ route('map') }}">
-                <i class="fas fa-archive text-grey"></i> {{ __('Course Report') }}
+                    <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('table') }}">
                   <i class="ni ni-bullet-list-67 text-default"></i>
-                  <span class="nav-link-text">Account setting</span>
+                  <span class="nav-link-text">Tables</span>
                 </a>
               </li>
+            <li class="nav-item mb-5 mr-4 ml-4 pl-1 bg-danger" style="position: absolute; bottom: 0;">
+                <a class="nav-link text-white" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
+                    <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
+                </a>
+            </li>
         </ul>
           <!-- Divider -->
           <hr class="my-3">
-
+          <!-- Heading -->
+          <h6 class="navbar-heading p-0 text-muted">
+            <span class="docs-normal">Documentation</span>
           </h6>
+          <!-- Navigation -->
+          <ul class="navbar-nav mb-md-3">
+            <li class="nav-item">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+                <i class="ni ni-spaceship"></i>
+                <span class="nav-link-text">Getting started</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+                <i class="ni ni-palette"></i>
+                <span class="nav-link-text">Foundation</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
+                <i class="ni ni-ui-04"></i>
+                <span class="nav-link-text">Components</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
+                <i class="ni ni-chart-pie-35"></i>
+                <span class="nav-link-text">Plugins</span>
               </a>
             </li>
           </ul>
@@ -347,14 +378,7 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Tables</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Tables</li>
-                </ol>
-              </nav>
+              <h6 class="h2 text-white d-inline-block mb-0">Upgrade to PRO</h6>
             </div>
             <div class="col-lg-6 col-5 text-right">
               <a href="#" class="btn btn-sm btn-neutral">New</a>
@@ -366,63 +390,167 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <!-- Card header -->
-            <div class="card-header border-0">
-              <h3 class="mb-0">Assessment Data Entry</h3>
+      <div class="row mt--5">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-upgrade">
+            <div class="card-header text-center border-bottom-0">
+              <h4 class="card-title">Argon Dashboard PRO</h4>
+              <p class="card-category">Are you looking for more components? Please check our Premium Version of Argon Dashboard.</p>
             </div>
-            <!-- Light table -->
-            <form action = "/create" method = "post" style="padding-left:25px; padding-right:25px;">
-                <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-                <table>
-                   <tr>
-                    <select name="assessmentType" class="form-control">
-                        <option>-- Select Assessment Type --</option>
-                        <option value="assignment">Assignment</option>
-                        <option value="report">Report</option>
-                        <option value="presentation">Presentation</option>
-                        <option value="quiz">Quiz</option>
-                        <option value="mid">MidTerm Exam</option>
-                        <option value="final">Final Exam</option>
-                     </select>
-                     <br/>
+            <div class="card-body">
+              <div class="table-responsive table-upgrade">
+                <table class="table">
+                  <thead>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><h2>Backend</h2></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
                     </tr>
                     <tr>
-                        <input type="text" name='assessmentNo' class="form-control" placeholder="Assesment No">
+                      <th></th>
+                      <th class="text-center">Free</th>
+                      <th class="text-center">PRO</th>
                     </tr>
-                   <br/>
-                   <tr>
-                    <input type="text" name='questionNo' class="form-control" placeholder="Question No">
-                </tr>
-               <br/>
-                   <tr>
-                    <input type="text" name='achievedMark' class="form-control" placeholder="Marks Achieved">
-                </tr>
-               <br/>
-
-                   <tr>
-                      <td>
-                        <button class="btn btn-primary" type="submit">Save</button>
-
+                    <tr>
+                      <td>Login, Register, Forgot password pages</td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>User profile</td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Users management</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>User roles management</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Items management</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Categories management, Tags management</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Wysiwyg, image upload, date picker inputs</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Radio button, checkbox, toggle inputs</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Notifications with Bootstrap Notify</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>DataTables.net</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td><h2>Frontend</h2></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                      <td>Elements</td>
+                      <td class="text-center">100</td>
+                      <td class="text-center">200</td>
+                    </tr>
+                    <tr>
+                      <td>Plugins</td>
+                      <td class="text-center">4</td>
+                      <td class="text-center">16</td>
+                    </tr>
+                    <tr>
+                      <td>Example Pages</td>
+                      <td class="text-center">6</td>
+                      <td class="text-center">25</td>
+                    </tr>
+                    <tr>
+                      <td>DataTables, VectorMap, SweetAlert, Wizard,<br> jQueryValidation, FullCalendar etc...</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Mini Sidebar</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td>Premium Support</td>
+                      <td class="text-center"><i class="ni ni-fat-remove text-danger"></i></td>
+                      <td class="text-center"><i class="ni ni-check-bold text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-center">Free</td>
+                      <td class="text-center">Just $149</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center"></td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-round btn-default disabled">Current Version</a>
                       </td>
-                   </tr>
+                      <td class="text-center">
+                        <a target="_blank" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" class="btn btn-round btn-primary">Upgrade to PRO</a>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
-             </form>
-             @if (session('status'))
-             <br />
-             <div class="alert alert-success alert-dismissible fade show" style="width:95%; margin-left:2.5%" role="alert">
-                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-                <span class="alert-text"><strong>Success!</strong></span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+              </div>
             </div>
-            @endif
-            <br />
-
-
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+        <div class="copyright text-center text-xl-left text-muted">
+            &copy; {{ now()->year }} <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a> &amp;
+            <a href="https://www.updivision.com" class="font-weight-bold ml-1" target="_blank">Updivision</a>
+        </div>
+          </div>
+    <div class="col-xl-6">
+        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+            <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.updivision.com" class="nav-link" target="_blank">Updivision</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+            </li>
+        </ul>
+    </div>
+        </div>
+      </footer>
+    </div>
+  </div>
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
