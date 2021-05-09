@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app_faculty')
 
 @section('content')
     @include('layouts.headers.cards')
-    
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-8 mb-5 mb-xl-0">
@@ -10,7 +10,7 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                                <h6 class="text-uppercase text-light ls-1 mb-1">OverviewX</h6>
                                 <h2 class="text-white mb-0">Sales value</h2>
                             </div>
                             <div class="col">
