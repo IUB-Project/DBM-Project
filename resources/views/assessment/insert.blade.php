@@ -294,6 +294,15 @@
                     <input type="text" name='questionNo' class="form-control" placeholder="Question No">
                 </tr>
                <br/>
+               <tr>
+                <select name="co_id" class="form-control">
+                    <option value="">--- Select CO ---</option>
+                    @foreach ($colist as $key)
+                    <option value="{{ $key }}">{{ $key }}</option>
+                    @endforeach
+                </select>
+               </tr>
+               <br/>
 
                    <tr>
                     <input type="text" name='achievedMark' class="form-control" placeholder="Marks Achieved">

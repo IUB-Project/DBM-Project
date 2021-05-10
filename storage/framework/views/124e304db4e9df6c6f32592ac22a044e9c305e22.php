@@ -86,21 +86,21 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;"><?php echo e(__('Laravel Examples')); ?></span>
+                        <i class="fas fa-archive" style="color: #494545;"></i>
+                        <span class="nav-link-text" style="color: #494545"><?php echo e(__('Assessment Records')); ?></span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('profile.edit')); ?>">
-                                    <?php echo e(__('User profile')); ?>
+                                <a class="nav-link" href="<?php echo e(route('assessment-insert')); ?>">
+                                    <?php echo e(__('Enter Assessment Data')); ?>
 
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(route('user.index')); ?>">
-                                    <?php echo e(__('User Management')); ?>
+                                    <?php echo e(__('View Assessment Data')); ?>
 
                                 </a>
                             </li>
@@ -121,7 +121,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('table')); ?>">
+                    <a class="nav-link" href="<?php echo e(route('assessment-insert')); ?>">
                       <i class="ni ni-bullet-list-67 text-default"></i>
                       <span class="nav-link-text">Tables</span>
                     </a>

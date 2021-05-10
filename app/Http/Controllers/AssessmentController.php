@@ -22,6 +22,7 @@ class AssessmentController extends Controller {
       $course_id = $request->input('course_id');
       $section_no = $request->input('section_no');
       $student_id = $request->input('student_id');
+      $co_id = $request->input('co_id');
 
       DB::table('assessment_t')->insert([
         'assessmentNo' => $assessmentNo,
@@ -30,6 +31,7 @@ class AssessmentController extends Controller {
         'questionNo' => $questionNo,
         'section_no' => $section_no,
         'student_id' => $student_id,
+        'co_id' => $co_id,
         'course_id' => $course_id
     ]);
       //DB::insert('insert into assessment_t (all) values(?)',[$data]);
