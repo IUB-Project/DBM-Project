@@ -47,7 +47,7 @@ class enrollmentController extends Controller {
         'enrollmentDate' => $enrollmentDate
     ]);
       //DB::insert('insert into assessment_t (all) values(?)',[$data]);
-    return redirect('enrollment')->with('status', 'Success!');
+    return redirect('enrollment/insert')->with('status', 'Success!');
 
 
 
