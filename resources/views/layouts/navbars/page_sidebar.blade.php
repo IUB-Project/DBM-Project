@@ -74,7 +74,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.index') }}">
+                            <a class="nav-link" href="{{ route('enrollment-view') }}">
                                 {{ __('View Enrollment Data') }}
                             </a>
                         </li>
@@ -82,7 +82,7 @@
                 </div>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{ route('map') }}">
+                <a class="nav-link" href="{{ route('table') }}">
                 <i class="fas fa-archive text-grey"></i> {{ __('Course Report') }}
                 </a>
             </li>

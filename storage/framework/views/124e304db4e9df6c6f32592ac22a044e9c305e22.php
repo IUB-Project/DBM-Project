@@ -86,8 +86,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fas fa-archive" style="color: #494545;"></i>
-                        <span class="nav-link-text" style="color: #494545"><?php echo e(__('Assessment Records')); ?></span>
+                        <i class="fas fa-archive" style="color: #525f7f;"></i>
+                        <span class="nav-link-text" style="color: #525f7f"><?php echo e(__('Assessment Records')); ?></span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
@@ -99,7 +99,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('user.index')); ?>">
+                                <a class="nav-link" href="<?php echo e(route('assessment-view')); ?>">
                                     <?php echo e(__('View Assessment Data')); ?>
 
                                 </a>
@@ -109,21 +109,40 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo e(route('icons')); ?>">
-                        <i class="ni ni-planet text-blue"></i> <?php echo e(__('Icons')); ?>
-
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="fas fa-archive" style="color: #525f7f;"></i>
+                        <span class="nav-link-text" style="color: #525f7f"><?php echo e(__('Enrollment Records')); ?></span>
                     </a>
+
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(route('enrollment-insert')); ?>">
+                                    <?php echo e(__('Enter Enrollment Data')); ?>
+
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(route('enrollment-view')); ?>">
+                                    <?php echo e(__('View Enrollment Data')); ?>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
                 <li class="nav-item ">
-                    <a class="nav-link" href="<?php echo e(route('map')); ?>">
-                        <i class="ni ni-pin-3 text-orange"></i> <?php echo e(__('Maps')); ?>
+                    <a class="nav-link" href="<?php echo e(route('table')); ?>">
+                    <i class="fas fa-archive text-grey"></i> <?php echo e(__('Course Report')); ?>
 
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('assessment-insert')); ?>">
                       <i class="ni ni-bullet-list-67 text-default"></i>
-                      <span class="nav-link-text">Tables</span>
+                      <span class="nav-link-text">Account Settings</span>
                     </a>
                 </li>
 

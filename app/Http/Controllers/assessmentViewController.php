@@ -22,6 +22,9 @@ class assessmentViewController extends Controller
                 ->where('course_id', $course_id)
                 ->where('student_id', $student_id)
                 ->where('section_no', $section_no)
+                ->orderBy('assessmentType')
+                ->orderBy('assessmentNo')
+                ->orderBy('questionNo')
                 ->get();
 
 
