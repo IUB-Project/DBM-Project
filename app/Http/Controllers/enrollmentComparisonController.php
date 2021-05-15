@@ -51,8 +51,65 @@ class enrollmentComparisonController extends Controller
 
 
             }
-
             //var_dump($eCS1);
+            elseif (empty($school_id) and empty($degreeProgram_id)){
+
+                $eCS1 = DB::table('enrollment_t')
+                ->where('department_id', $department_id)
+                ->where('semester_id', 1)
+                ->count();
+
+                $eCS2 = DB::table('enrollment_t')
+                ->where('department_id', $department_id)
+                ->where('semester_id', 2)
+                ->count();
+
+                $eCS3 = DB::table('enrollment_t')
+                ->where('department_id', $department_id)
+                ->where('semester_id', 3)
+                ->count();
+
+                $eCS4 = DB::table('enrollment_t')
+                ->where('department_id', $department_id)
+                ->where('semester_id', 4)
+                ->count();
+
+                $eCS5 = DB::table('enrollment_t')
+                ->where('department_id', $department_id)
+                ->where('semester_id', 5)
+                ->count();
+
+
+            }
+            else (empty($school_id) and empty($department_id)){
+
+                $eCS1 = DB::table('enrollment_t')
+                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('semester_id', 1)
+                ->count();
+
+                $eCS2 = DB::table('enrollment_t')
+                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('semester_id', 2)
+                ->count();
+
+                $eCS3 = DB::table('enrollment_t')
+                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('semester_id', 3)
+                ->count();
+
+                $eCS4 = DB::table('enrollment_t')
+                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('semester_id', 4)
+                ->count();
+
+                $eCS5 = DB::table('enrollment_t')
+                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('semester_id', 5)
+                ->count();
+
+
+            }
 
             return view('enrollment.compare', compact('eCS1','eCS2','eCS3','eCS4','eCS5'));
 
