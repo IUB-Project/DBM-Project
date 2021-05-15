@@ -2,7 +2,7 @@
 
 @section('content')
     @include('layouts.headers.cards')
-    
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-8 mb-5 mb-xl-0">
@@ -47,6 +47,7 @@
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
                                 <h2 class="mb-0">Total orders</h2>
+                                1
                             </div>
                         </div>
                     </div>
@@ -287,3 +288,21 @@
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 @endpush
+
+{{-- @extends('layouts.app')
+
+@section('content')
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<h1 class="display-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Under Development</h1>
+@endsection
+
+
+@push('js')
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+@endpush --}}

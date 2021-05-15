@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <?php echo $__env->make('layouts.headers.cards', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-8 mb-5 mb-xl-0">
@@ -45,6 +45,7 @@
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
                                 <h2 class="mb-0">Total orders</h2>
+                                1
                             </div>
                         </div>
                     </div>
@@ -285,4 +286,7 @@
     <script src="<?php echo e(asset('argon')); ?>/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="<?php echo e(asset('argon')); ?>/vendor/chart.js/dist/Chart.extension.js"></script>
 <?php $__env->stopPush(); ?>
+
+
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/dashboard.blade.php ENDPATH**/ ?>

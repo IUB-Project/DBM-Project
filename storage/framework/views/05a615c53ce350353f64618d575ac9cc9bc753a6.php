@@ -50,11 +50,12 @@
                     <div class="dropdown-divider"></div>
                     <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="ni ni-user-run"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                         <span><?php echo e(__('Logout')); ?></span>
                     </a>
                 </div>
             </li>
         </ul>
     </div>
-</nav><?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/navbars/navs/auth.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH C:\Users\ph168\Desktop\GitHub\DBM-Project\resources\views/layouts/navbars/navs/auth.blade.php ENDPATH**/ ?>

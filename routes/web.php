@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AssessmentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,21 +14,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     return view('auth.login');
+// })->middleware('auth');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/fd', function () {
-    return view('faculty_dashboard');
-});
+
+
+// Route::get('/fd', function () {
+//     return view('faculty_dashboard');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+// Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -35,7 +40,22 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade');
 	 Route::get('map', function () {return view('pages.maps');})->name('map');
 	 Route::get('icons', function () {return view('pages.icons');})->name('icons');
-	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
+     Route::post('/assessmentinsert', [App\Http\Controllers\AssessmentController::class, 'insert'])->name('ai');
+     Route::post('/enrollmentinsert', [App\Http\Controllers\enrollmentController::class, 'insert'])->name('ei');
+     Route::post('/enrollmentview', [App\Http\Controllers\EnrollmentViewController::class, 'view'])->name('ev');
+     Route::post('/assessmentview', [App\Http\Controllers\assessmentViewController::class, 'view'])->name('av');
+     Route::get('/obe', [App\Http\Controllers\obeController::class, 'view'])->name('obe');
+     Route::post('/enrollmentcomparison', [App\Http\Controllers\enrollmentComparisonController::class, 'view'])->name('ecv');
+	 Route::get('assessment/insert', function () {return view('assessment.insert');})->name('assessment-insert');
+     Route::get('assessment/view', function () {return view('assessment.view');})->name('assessment-view');
+     Route::get('assessment', function () {return view('backup_welcome');})->name('table');
+     Route::get('enrollment/insert', function () {return view('enrollment.insert');})->name('enrollment-insert');
+     Route::get('enrollment/view', function () {return view('enrollment.view');})->name('enrollment-view');
+     Route::get('enrollment/compare', function () {return view('enrollment.compare');})->name('enrollment-compare');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

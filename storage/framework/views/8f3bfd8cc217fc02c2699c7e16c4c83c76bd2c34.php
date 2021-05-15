@@ -24,26 +24,7 @@
                 </div>
             </div>
             <!-- Navbar items -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo e(route('home')); ?>">
-                        <i class="ni ni-planet"></i>
-                        <span class="nav-link-inner--text"><?php echo e(__('Dashboard')); ?></span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo e(route('login')); ?>">
-                        <i class="ni ni-key-25"></i>
-                        <span class="nav-link-inner--text"><?php echo e(__('Login')); ?></span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo e(route('profile.edit')); ?>">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-inner--text"><?php echo e(__('Profile')); ?></span>
-                    </a>
-                </li>
-            </ul>
+            
         </div>
     </div>
 </nav>
