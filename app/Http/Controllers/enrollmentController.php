@@ -26,6 +26,9 @@ class enrollmentController extends Controller {
       $email = $request->input('email');
       $address = $request->input('address');
       $department_id = $request->input('department_id');
+      $semester_id = $request->input('semester_id');
+      $school_id = $request->input('school_id');
+
 
       DB::table('student_t')->insert([
         'student_id' => $student_id,
@@ -44,7 +47,10 @@ class enrollmentController extends Controller {
       DB::table('enrollment_t')->insert([
         'student_id' => $student_id,
         'degreeProgram_id' => $degreeProgram_id,
-        'enrollmentDate' => $enrollmentDate
+        'enrollmentDate' => $enrollmentDate,
+        'department_id' => $department_id,
+        'school_id' => $school_id,
+        'semester_id' => $semester_id
     ]);
       //DB::insert('insert into assessment_t (all) values(?)',[$data]);
     return redirect('enrollment/insert')->with('status', 'Success!');

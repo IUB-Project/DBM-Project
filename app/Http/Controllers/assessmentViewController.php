@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class assessmentViewController extends Controller
 {
     public function view(Request $request) {
-        $course_id= $request->input('course_id');
+        $course_id = $request->input('course_id');
         $student_id = $request->input('student_id');
         $section_no = $request->input('section_no');
 

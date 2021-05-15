@@ -39,5 +39,11 @@ class AppServiceProvider extends ServiceProvider
         $colist = DB::table('co_t')->pluck("co_id");
         view()->share('colist', $colist);
 
+        $semesterList = DB::table('semester_t')->get();
+        view()->share('semesterList', $semesterList);
+
+        $schoolList = DB::table('school_t')->pluck("schoolName","school_id");
+        view()->share('schoolList', $schoolList);
+
     }
 }

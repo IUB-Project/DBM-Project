@@ -19,6 +19,7 @@
         <link href="<?php echo e(asset('argon')); ?>/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="<?php echo e(asset('argon')); ?>/css/argon.css?v=1.0.0" rel="stylesheet">
+
     </head>
     <body class="<?php echo e($class ?? ''); ?>">
         <?php if(auth()->guard()->check()): ?>

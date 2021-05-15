@@ -2,7 +2,7 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-dark border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Navbar links -->
@@ -224,16 +224,16 @@
     </nav>
     <!-- Header -->
     <!-- Header -->
-    <div class="header bg-primary pb-6">
+    <div class="header bg-dark pb-6">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Enrollment Records</h6>
-                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Enrollemnt Records</li>
+              <h6 class="h2 text-white d-inline-block mb-0">Enrollment Records</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Enrollemnt Records</li>
                 </ol>
               </nav>
             </div>
@@ -252,145 +252,112 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Enrollment Data Entry</h3>
+              <h3 class="mb-0">View Enrollment Data</h3>
             </div>
             <!-- Light table -->
-            <form action = "/enrollmentinsert" method = "post" style="padding-left:25px; padding-right:25px;">
+            <form action = "/enrollmentcomparison" method = "post" style="padding-left:25px; padding-right:25px;">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                 <table>
                     <tr>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">First and last name</span>
-                            </div>
-                            <input type="text" name='fName' aria-label="First name" class="form-control">
-                            <input type="text" name='lName' aria-label="Last name" class="form-control">
-                          </div>
-                    </tr>
-                   <br/>
+                        <select name="school_id" class="form-control">
+                            <option value="">--- Select School ---</option>
+                            @foreach ($schoolList as $key => $value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+                       </tr>
+                       <br/>
                     <tr>
-                        <input type="number" name='student_id' class="form-control" placeholder="Student ID">
-                    </tr>
-                   <br/>
-                   <tr>
-                    <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Date of Birth</span>
-                          </div>
-                          <input class="form-control" type="date" name='dateOfBirth' id="enrollment-date-input">
-                        </div>
-                    </div>
-                </tr>
-                <tr>
-                    <select name="gender" class="form-control">
-                        <option>-- Select Gender --</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                     </select>
-                </tr>
-                     <br/>
-                     <tr>
-                     <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                          </div>
-                          <input class="form-control" type="email" name='email' id="email-input">
-                        </div>
-                    </div>
-                </tr>
-                <tr>
-                    <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
-                          </div>
-                          <input class="form-control" type="phone" name='phone' id="phone-input">
-                        </div>
-                    </div>
-                </tr>
-                <tr>
-                    <input class="form-control form-control-lg" type="text" name='address' placeholder="Address">
-                </tr>
-               <br/>
-                   <tr>
-                    <select name="degreeProgram_id" class="form-control">
-                        <option value="">--- Select Degree Program ---</option>
-                        @foreach ($degreeProgramlist as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
-                        @endforeach
-                    </select>
+                      <td>
+                        <button class="btn btn-primary" type="submit">Search</button>
+
+                      </td>
                    </tr>
-                   <br/>
-                   <tr>
-                    <select name="school_id" class="form-control">
-                        <option value="">--- Select School ---</option>
-                        @foreach ($schoolList as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
-                        @endforeach
-                    </select>
-                   </tr>
-                   <br/>
-                   <tr>
-                    <select name="department_id" class="form-control">
-                        <option value="">--- Select Department ---</option>
-                        @foreach ($departmentlist as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
-                        @endforeach
-                    </select>
-                   </tr>
-                   <br/>
-                   <tr>
-                    <select name="semester_id" class="form-control">
-                        <option value="">--- Select Semester ---</option>
-                        @foreach ($semesterList as $value)
-                        <option value="{{ $value->semester_id }}">{{ $value->season }} {{ $value->year }}</option>
-                        @endforeach
-                    </select>
-                   </tr>
-                   <br/>
-                   <tr>
-                    <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Enrollment Date</span>
-                          </div>
-                          <input class="form-control" type="date" name='enrollmentDate' id="enrollment-date-input">
-                        </div>
-                    </div>
-                </tr>
-                    <tr>
-                        <button class="btn btn-primary" type="submit">Save</button>
-                   </tr>
-                   <br/>
-                </form>
+                </table>
+                <br />
+             </form>
+
+     @if(empty($eCS1))
 
 
-             @if (session('status'))
-             <br />
-             <div class="alert alert-success alert-dismissible fade show" style="width:105%, margin-left:1%, margin-right:1%" role="alert">
-                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-                <span class="alert-text"><strong>Success!</strong></span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        @else
+        <script>
+      var v1 = {{ json_encode($eCS1) }};
+      var v2 = {{ json_encode($eCS2) }};
+      var v3 = {{ json_encode($eCS3) }};
+      var v4 = {{ json_encode($eCS4) }};
+      var v5 = {{ json_encode($eCS5) }};
+      </script>
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">
+        <!-- Title -->
+        <h5 class="h3 mb-0">Comparison Records</h5>
+        </div>
+        <!-- Card body -->
+            <div class="card-body">
+        <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="new" class="chart-canvas"></canvas>
+        </div>
+        </div>
+        </div>
+
             @endif
-            <br />
-        </table>
+         </div>
+        {{-- @endif --}}
 
 
   <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
-</body>
 
-</html>
+  <!-- Core -->
+  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- Optional JS -->
+  <script src="../../assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <!-- Docs JS -->
+  <script src="../../assets/vendor/anchor-js/anchor.min.js"></script>
+  <script src="../../assets/vendor/clipboard/dist/clipboard.min.js"></script>
+  <script src="../../assets/vendor/holderjs/holder.min.js"></script>
+  <script src="../../assets/vendor/prismjs/prism.js"></script>
+  <!-- Argon JS -->
+  <script src="../../assets/js/argon.min.js?v=1.2.0"></script>
+
+  <script type="text/javascript">
+    var BarsChart = (function() {
+
+      var $chart = $('#new');
+
+
+
+      function initChart($chart) {
+
+          // Create chart
+          var ordersChart = new Chart($chart, {
+              type: 'bar',
+              data: {
+                  labels: ['Semester 1','Semester','Semester','Semester','Semester'],
+                  datasets: [{
+                      label: 'Enrollment Count',
+                      data: [v1,v2,v3,v4,v5]
+                  }]
+              }
+          });
+
+          // Save to jQuery object
+          $chart.data('chart', ordersChart);
+      }
+
+
+      // Init chart
+      if ($chart.length) {
+          initChart($chart);
+      }
+
+  })();
+  </script>
