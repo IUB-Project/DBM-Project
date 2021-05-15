@@ -13,12 +13,12 @@ class enrollmentComparisonController extends Controller
     {
 
         /* Input Section */
-        $enrollmentDateStart = $request->input('enrollmentDateStart');
-        $enrollmentDateEnd = $request->input('enrollmentDateEnd');
+        // $enrollmentDateStart = $request->input('enrollmentDateStart');
+        // $enrollmentDateEnd = $request->input('enrollmentDateEnd');
         $degreeProgram_id = $request->input('degreeProgram_id');
         $department_id = $request->input('department_id');
         $school_id = $request->input('school_id');
-        $semester_id = $request->input('semester_id');
+        // $semester_id = $request->input('semester_id');
 
         /* Variables: eCS1-5 */
 
@@ -51,7 +51,9 @@ class enrollmentComparisonController extends Controller
 
 
             }
-            //var_dump($eCS1);
+            // var_dump($eCS1);
+            // var_dump($school_id);
+            // var_dump($department_id);
             elseif (empty($school_id) and empty($degreeProgram_id)){
 
                 $eCS1 = DB::table('enrollment_t')
@@ -81,35 +83,37 @@ class enrollmentComparisonController extends Controller
 
 
             }
-            else (empty($school_id) and empty($department_id)){
+            elseif (empty($school_id) and empty($department_id)){
 
                 $eCS1 = DB::table('enrollment_t')
-                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('degreeProgram_id', $degreeProgram_id)
                 ->where('semester_id', 1)
                 ->count();
 
                 $eCS2 = DB::table('enrollment_t')
-                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('degreeProgram_id', $degreeProgram_id)
                 ->where('semester_id', 2)
                 ->count();
 
                 $eCS3 = DB::table('enrollment_t')
-                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('degreeProgram_id', $degreeProgram_id)
                 ->where('semester_id', 3)
                 ->count();
 
                 $eCS4 = DB::table('enrollment_t')
-                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('degreeProgram_id', $degreeProgram_id)
                 ->where('semester_id', 4)
                 ->count();
 
                 $eCS5 = DB::table('enrollment_t')
-                ->where('degreeprogram_id', $degreeprogram_id)
+                ->where('degreeProgram_id', $degreeProgram_id)
                 ->where('semester_id', 5)
                 ->count();
 
 
             }
+            else
+            echo 'holla';
 
             return view('enrollment.compare', compact('eCS1','eCS2','eCS3','eCS4','eCS5'));
 

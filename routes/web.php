@@ -45,9 +45,11 @@ Route::group(['middleware' => 'auth'], function () {
      Route::post('/enrollmentview', [App\Http\Controllers\EnrollmentViewController::class, 'view'])->name('ev');
      Route::post('/assessmentview', [App\Http\Controllers\assessmentViewController::class, 'view'])->name('av');
      Route::get('/obe', [App\Http\Controllers\obeController::class, 'view'])->name('obe');
+     Route::post('/gpa', [App\Http\Controllers\cgpaCalculateController::class, 'view'])->name('gpa');
      Route::post('/enrollmentcomparison', [App\Http\Controllers\enrollmentComparisonController::class, 'view'])->name('ecv');
 	 Route::get('assessment/insert', function () {return view('assessment.insert');})->name('assessment-insert');
      Route::get('assessment/view', function () {return view('assessment.view');})->name('assessment-view');
+     Route::get('assessment/calculate', function () {return view('assessment.calculate');})->name('assessment-calculate');
      Route::get('assessment', function () {return view('backup_welcome');})->name('table');
      Route::get('enrollment/insert', function () {return view('enrollment.insert');})->name('enrollment-insert');
      Route::get('enrollment/view', function () {return view('enrollment.view');})->name('enrollment-view');

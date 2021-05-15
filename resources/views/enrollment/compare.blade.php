@@ -259,12 +259,32 @@
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                 <table>
                     <tr>
-                        <select name="school_id" class="form-control">
+                        <select name="school_id" class="form-control" style='width:30%'>
                             <option value="">--- Select School ---</option>
                             @foreach ($schoolList as $key => $value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>
+                       </tr>
+                       <br/>
+                       <tr>
+                        <select name="department_id" class="form-control" style='width:30%'>
+                            <option value="">--- Select Department ---</option>
+                            @foreach ($departmentlist as $key => $value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+
+                       </tr>
+                       <br/>
+                       <tr>
+                        <select name="degreeProgram_id" class="form-control" style='width:30%'>
+                            <option value="">--- Select Degree Program ---</option>
+                            @foreach ($degreeProgramlist as $key => $value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+
                        </tr>
                        <br/>
                     <tr>
@@ -287,6 +307,7 @@
       var v3 = {{ json_encode($eCS3) }};
       var v4 = {{ json_encode($eCS4) }};
       var v5 = {{ json_encode($eCS5) }};
+
       </script>
         <div class="card">
 
@@ -341,7 +362,7 @@
           var ordersChart = new Chart($chart, {
               type: 'bar',
               data: {
-                  labels: ['Semester 1','Semester','Semester','Semester','Semester'],
+                  labels: ['Spring 2021','Summer 2021','Spring 2021','Summer 2020','Autumn 2020'],
                   datasets: [{
                       label: 'Enrollment Count',
                       data: [v1,v2,v3,v4,v5]

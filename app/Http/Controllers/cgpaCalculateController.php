@@ -7,16 +7,16 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class assessmentComparisonController extends Controller
+class cgpaCalculateController extends Controller
 {
     public function view(Request $request)
     {
 
         /* Input Section */
-        $degreeProgram_id = $request->input('degreeProgram_id');
-        $department_id = $request->input('department_id');
-        $school_id = $request->input('school_id');
-        $semester_id = $request->input('semester_id');
+        // $degreeProgram_id = $request->input('degreeProgram_id');
+        // $department_id = $request->input('department_id');
+        // $school_id = $request->input('school_id');
+        // $semester_id = $request->input('semester_id');
         $course_id = $request->input('course_id');
         $student_id = $request->input('student_id');
         $section_no = $request->input('section_no');
@@ -26,12 +26,14 @@ class assessmentComparisonController extends Controller
         $Mid_achieved = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Mid')
         ->sum('achievedMark');
 
         $Mid_total = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Mid')
         ->sum('maxMarks');
 
@@ -41,12 +43,14 @@ class assessmentComparisonController extends Controller
         $Final_achieved = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Final')
         ->sum('achievedMark');
 
         $Final_total = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Final')
         ->sum('maxMarks');
 
@@ -56,19 +60,21 @@ class assessmentComparisonController extends Controller
         $project_achieved = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Assignment')
-        ->where('assessmentType', 'Report')
-        ->where('assessmentType', '	Quiz')
-        ->where('assessmentType', '	Presentation')
+        // ->where('assessmentType', 'Report')
+        // ->where('assessmentType', '	Quiz')
+        // ->where('assessmentType', '	Presentation')
         ->sum('achievedMark');
 
         $project_total = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
         ->where('assessmentType', 'Assignment')
-        ->where('assessmentType', 'Report')
-        ->where('assessmentType', '	Quiz')
-        ->where('assessmentType', '	Presentation')
+        // ->where('assessmentType', 'Report')
+        // ->where('assessmentType', '	Quiz')
+        // ->where('assessmentType', '	Presentation')
         ->sum('maxMarks');
 
         $project_r = (($project_achieved/$project_total)*100);
@@ -116,27 +122,45 @@ class assessmentComparisonController extends Controller
             $gpa = 1;
             $grade = 'D';
         }
-        else($total_achievedMarks <40){
+        elseif($total_achievedMarks <40){
             $gpa = 0;
             $grade = 'F';
         }
 
-        DB::table('student_cgpa_t')->insert([
-            'student_id' => $student_id,
-            'course_id' => $course_id,
-            'school_id' => $school_id,
-            'department_id' => $department_id,
-            'gpa' => $gpa,
-            'semester_id' => $semester_id,
-            'grade' => $grade,
-            'degreeProgram_id' => $degreeProgram_id
-        ]);
+        else
+        $grade = "No grade";
+
+        $id = DB::table('student_cgpa_t')->pluck('student_id');
+
+        foreach($id as $r){
+            if($student_id==$r){
+                echo 'No value';
+            }
+            else {
+                DB::table('student_cgpa_t')->insert([
+                    'student_id' => $student_id,
+                    'course_id' => $course_id,
+                    // 'school_id' => $school_id,
+                    'section_no' => $section_no,
+                    // 'department_id' => $department_id,
+                    'gpa' => $gpa,
+                    // 'semester_id' => $semester_id,
+                    'grade' => $grade
+                    // 'degreeProgram_id' => $degreeProgram_id
+                ]);
+            }
+        }
 
 
 
-            //var_dump($eCS1);
 
-        return view('enrollment.compare', compact('eCS1','eCS2','eCS3','eCS4','eCS5'));
+        $results =  DB::table('student_cgpa_t')
+                    ->where('course_id', $course_id)
+                    ->where('student_id', $student_id)
+                    ->where('section_no', $section_no)
+                    ->get();
+
+        return view('assessment.calculate', compact('results'));
 
     }
 }

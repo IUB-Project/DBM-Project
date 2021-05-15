@@ -5,6 +5,9 @@
     <nav class="navbar navbar-top navbar-expand navbar-dark bg-dark border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          </form>
+          <!-- Navbar links -->
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item d-xl-none">
               <!-- Sidenav toggler -->
@@ -251,83 +254,79 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Assessment Data Entry</h3>
+              <h3 class="mb-0">View GPA Data</h3>
             </div>
             <!-- Light table -->
-            <form action = "/assessmentinsert" method = "post" style="padding-left:25px; padding-right:25px;">
+            <form action = "/gpa" method = "post" style="padding-left:25px; padding-right:25px;">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                 <table>
                     <tr>
-                        <select name="course_id" class="form-control">
-                            <option value="">--- Select Course ---</option>
-                            @foreach ($courselist as $key => $value)
-                            <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
-                        </select>
+                      <div class="form-group mb-0" style="width: 350px">
+                        <div class="input-group input-group-alternative input-group-merge">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                          </div>
+                          <input type="text" name="course_id" class="form-control" placeholder="Enter Course ID" >
+                        </div>
+                      </div>
                        </tr>
                        <br/>
-                       <tr>
-                        <input type="text" name='section_no' class="form-control" placeholder="Section">
-                    </tr>
-                   <br/>
                    <tr>
-                    <input type="text" name='student_id' class="form-control" placeholder="Student ID">
-                </tr>
-               <br/>
-                   <tr>
-                    <select name="assessmentType" class="form-control">
-                        <option>-- Select Assessment Type --</option>
-                        <option value="Assignment">Assignment</option>
-                        <option value="Project">Project</option>
-                        <option value="Presentation">Presentation</option>
-                        <option value="Quiz">Quiz</option>
-                        <option value="Mid">MidTerm Exam</option>
-                        <option value="Final">Final Exam</option>
-                     </select>
-                     <br/>
-                    </tr>
-                    <tr>
-                        <input type="text" name='assessmentNo' class="form-control" placeholder="Assesment No">
-                    </tr>
-                   <br/>
-                   <tr>
-                    <input type="text" name='questionNo' class="form-control" placeholder="Question No">
-                </tr>
-               <br/>
-               <tr>
-                <select name="co_id" class="form-control">
-                    <option value="">--- Select CO ---</option>
-                    @foreach ($colist as $key)
-                    <option value="{{ $key }}">{{ $key }}</option>
-                    @endforeach
-                </select>
-               </tr>
-               <br/>
+                    <div class="form-group mb-0" style="width: 350px">
+                        <div class="input-group input-group-alternative input-group-merge">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                          </div>
+                          <input type="text" name="section_no" class="form-control" placeholder="Enter Section" >
+                        </div>
+                      </div>
 
-                   <tr>
-                    <input type="text" name='achievedMark' class="form-control" placeholder="Marks Achieved">
-                </tr>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <div class="form-group mb-0" style="width: 350px">
+                            <div class="input-group input-group-alternative input-group-merge">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                              </div>
+                              <input type="text" name="student_id" class="form-control" placeholder="Enter Student ID">
+                            </div>
+                          </div>
+                        </tr>
                <br/>
 
                    <tr>
                       <td>
-                        <button class="btn btn-primary" type="submit">Save</button>
-                    </td>
+                        <button class="btn btn-primary" type="submit">Search</button>
+
+                      </td>
                    </tr>
                 </table>
-                <br/>
+                <br />
              </form>
-             @if (session('status'))
-             <br />
-             <div class="alert alert-success alert-dismissible fade show" style="width:95%; margin-left:2.5%" role="alert">
-                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-                <span class="alert-text"><strong>Success!</strong></span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+
+     @if(empty($results))
+        @else
+            <div class="table-responsive">
+            <table class="table align-items-center">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col" >Student ID</th>
+                    <th scope="col" >Grade</th>
+                    <th scope="col" >GPA</th>
+                </tr>
+                @foreach ($results as $r)
+                <tr>
+                <td>{{ $r->student_id }}</td>
+                <td>{{ $r->grade }}</td>
+                <td>{{ $r->gpa }}</td>
+                </tr>
+                @endforeach
+            </thead>
+                </table>
             @endif
-            <br />
+         </div>
+        {{-- @endif --}}
 
 
   <!-- Argon Scripts -->
