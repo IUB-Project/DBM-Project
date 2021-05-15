@@ -14,10 +14,6 @@ class assessmentViewController extends Controller
         $student_id = $request->input('student_id');
         $section_no = $request->input('section_no');
 
-        // var_dump($course_id);
-        // var_dump($student_id);
-        // var_dump($section_no);
-
         $results = DB::table('assessment_t')
                 ->where('course_id', $course_id)
                 ->where('student_id', $student_id)
