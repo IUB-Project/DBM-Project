@@ -51,7 +51,6 @@ class enrollmentComparisonController extends Controller
 
 
             }
-         
             //var_dump($eCS1);
             elseif (empty($school_id) and empty($degreeProgram_id)){
 
@@ -112,7 +111,6 @@ class enrollmentComparisonController extends Controller
 
             }
 
-                
             return view('enrollment.compare', compact('eCS1','eCS2','eCS3','eCS4','eCS5'));
 
     }
