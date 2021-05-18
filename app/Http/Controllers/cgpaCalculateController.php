@@ -57,24 +57,61 @@ class cgpaCalculateController extends Controller
         $Final_r = (($Final_achieved/$Final_total)*100);
         $Final_r_c = ($Final_r/40);
 
-        $project_achieved = DB::table('assessment_t')
+        $project_a1 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
         ->where('assessmentType', 'Assignment')
-        // ->where('assessmentType', 'Report')
-        // ->where('assessmentType', '	Quiz')
-        // ->where('assessmentType', '	Presentation')
         ->sum('achievedMark');
 
-        $project_total = DB::table('assessment_t')
+        $project_t1 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
         ->where('assessmentType', 'Assignment')
-        // ->where('assessmentType', 'Report')
-        // ->where('assessmentType', '	Quiz')
-        // ->where('assessmentType', '	Presentation')
+        ->sum('maxMarks');
+        $project_a2 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', 'Project')
+        ->sum('achievedMark');
+
+        $project_t2 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', 'Project')
+        ->sum('maxMarks');
+
+        $project_a3 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', '	Quiz')
+        ->sum('achievedMark');
+
+        $project_t3 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', 'Project')
+        ->where('assessmentType', '	Quiz')
+        ->sum('maxMarks');
+
+        $project_a4 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', '	Presentation')
+        ->sum('achievedMark');
+
+        $project_t4 = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('assessmentType', 'Project')
+        ->where('assessmentType', '	Presentation')
         ->sum('maxMarks');
 
         $project_r = (($project_achieved/$project_total)*100);
