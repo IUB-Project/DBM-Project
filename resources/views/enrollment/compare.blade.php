@@ -1,6 +1,124 @@
-@include('layouts.navbars.page_sidebar')
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>SPM Dashboard</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <!-- Dropdown -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+  <!-- Sidenav -->
+  <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="brand" href="{{ route('home') }}">
+          <img src="../assets/img/brand/blue.png" class="brand-img" alt="..." style="width: 35%; margin:5%">
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <i class="fas fa-archive" style="color: #525f7f;"></i>
+                    <span class="nav-link-text" style="color: #525f7f">{{ __('Assessment Records') }}</span>
+                </a>
+
+                <div class="collapse show" id="navbar-examples">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('assessment-insert') }}">
+                                {{ __('Enter Assessment Data') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('assessment-view') }}">
+                                {{ __('View Assessment Data') }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <i class="fas fa-archive" style="color: #525f7f;"></i>
+                    <span class="nav-link-text" style="color: #525f7f">{{ __('Enrollment Records') }}</span>
+                </a>
+
+                <div class="collapse show" id="navbar-examples">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('enrollment-insert') }}">
+                                {{ __('Enter Enrollment Data') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('enrollment-view') }}">
+                                {{ __('View Enrollment Data') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('enrollment-compare') }}">
+                                {{ __('View Enrollment Comparison') }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ route('table') }}">
+                <i class="fas fa-archive text-grey"></i> {{ __('Course Report') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('table') }}">
+                  <i class="ni ni-bullet-list-67 text-default"></i>
+                  <span class="nav-link-text">Account setting</span>
+                </a>
+              </li>
+        </ul>
+          <!-- Divider -->
+          <hr class="my-3">
+
+          </h6>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
   <!-- Main content -->
-  <div class="main-content" id="panel">
+<div class="main-content" id="panel">
     <!-- Topnav -->
     <nav class="navbar navbar-top navbar-expand navbar-dark bg-dark border-bottom">
       <div class="container-fluid">
@@ -237,56 +355,67 @@
                 </ol>
               </nav>
             </div>
-            <div class="col-lg-6 col-5 text-right">
+            {{-- <div class="col-lg-6 col-5 text-right">
               <a href="#" class="btn btn-sm btn-neutral">New</a>
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
     </div>
     <!-- Page content -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <style type="text/css">
+        .dropdown-toggle{
+            height: 40px;
+            width: 420px !important;
+        }
+    </style>
     <div class="container-fluid mt--6">
       <div class="row">
         <div class="col">
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">View Enrollment Data</h3>
+              <h2 class="mb-0">View Enrollment Data</h2>
             </div>
             <!-- Light table -->
-            <form action = "/enrollmentcomparison" method = "post" style="padding-left:25px; padding-right:25px;">
+
+                <form action = "/enrollmentcomparison" method = "post" enctype="multipart/form-data" style="padding-left:25px; padding-right:25px;">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                 <table>
                     <tr>
-                        <select name="school_id" class="form-control" style='width:30%'>
-                            <option value="">--- Select School ---</option>
-                            @foreach ($schoolList as $key => $value)
-                            <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
-                        </select>
-                       </tr>
+                            <label>Select School :</label><br/>
+                            <select class="selectpicker" multiple data-live-search="true" name="school_id []" >
+                                @foreach ($schoolList as $key => $value)
+                                <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </tr>
+                       <br/>
                        <br/>
                        <tr>
-                        <select name="department_id" class="form-control" style='width:30%'>
-                            <option value="">--- Select Department ---</option>
+                        <label>Select Department :</label><br/>
+                        <select class="selectpicker" multiple data-live-search="true" name="department_id []" >
                             @foreach ($departmentlist as $key => $value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>
-
-                       </tr>
-                       <br/>
-                       <tr>
-                        <select name="degreeProgram_id" class="form-control" style='width:30%'>
-                            <option value="">--- Select Degree Program ---</option>
-                            @foreach ($degreeProgramlist as $key => $value)
-                            <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
-                        </select>
-
-                       </tr>
-                       <br/>
+                    </tr>
+                   <br/>
+                   <br/>
+                   <tr>
+                    <label>Select Degree Program :</label><br/>
+                    <select class="selectpicker" multiple data-live-search="true" name="degreeProgram_id []" >
+                        @foreach ($degreeProgramlist as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                </tr>
+               <br/>
+               <br/>
                     <tr>
                       <td>
                         <button class="btn btn-primary" type="submit">Search</button>
@@ -296,18 +425,25 @@
                 </table>
                 <br />
              </form>
+          </div>
+        </div>
+      </div>
 
-     @if(empty($eCS1))
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').selectpicker();
+        });
+    </script>
+
+
+
+     @if(empty($v))
 
 
         @else
         <script>
-      var v1 = {{ json_encode($eCS1) }};
-      var v2 = {{ json_encode($eCS2) }};
-      var v3 = {{ json_encode($eCS3) }};
-      var v4 = {{ json_encode($eCS4) }};
-      var v5 = {{ json_encode($eCS5) }};
-
+      var v1 = <?php echo json_encode($v);?>;
+      var v2 = <?php echo json_encode($x);?>;
       </script>
         <div class="card">
 
@@ -327,7 +463,9 @@
 
             @endif
          </div>
-        {{-- @endif --}}
+
+
+        </body>
 
 
   <!-- Argon Scripts -->
@@ -349,6 +487,14 @@
   <!-- Argon JS -->
   <script src="../../assets/js/argon.min.js?v=1.2.0"></script>
 
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     var BarsChart = (function() {
 
@@ -362,10 +508,10 @@
           var ordersChart = new Chart($chart, {
               type: 'bar',
               data: {
-                  labels: ['Spring 2021','Summer 2021','Spring 2021','Summer 2020','Autumn 2020'],
+                  labels: v2,
                   datasets: [{
                       label: 'Enrollment Count',
-                      data: [v1,v2,v3,v4,v5]
+                      data: v1
                   }]
               }
           });
@@ -382,3 +528,7 @@
 
   })();
   </script>
+        </div>
+
+
+</html>

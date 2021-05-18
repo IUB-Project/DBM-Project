@@ -15,45 +15,30 @@ class enrollmentComparisonController extends Controller
         /* Input Section */
         // $enrollmentDateStart = $request->input('enrollmentDateStart');
         // $enrollmentDateEnd = $request->input('enrollmentDateEnd');
-        $degreeProgram_id = $request->input('degreeProgram_id');
-        $department_id = $request->input('department_id');
-        $school_id = $request->input('school_id');
-        // $semester_id = $request->input('semester_id');
+        // $degreeProgram_id = $request->input('degreeProgram_id');
+        // $department_id = $request->input('department_id');
+        $value = $request->all();
+        $school_id = $value['school_id_'];
+        //var_dump($school_id);
+
+
 
         /* Variables: eCS1-5 */
 
         if (empty($department_id) and empty($degreeProgram_id)){
 
-                $eCS1 = DB::table('enrollment_t')
-                ->where('school_id', $school_id)
-                ->where('semester_id', 1)
-                ->count();
 
-                $eCS2 = DB::table('enrollment_t')
-                ->where('school_id', $school_id)
-                ->where('semester_id', 2)
-                ->count();
+                    $eCS = DB::table('enrollment_t')
+                    ->select(DB::raw('count(*) as  disk_count'))
+                    ->whereIn('school_id', $school_id)
+                    ->where('semester_id', 1)
+                    ->groupBy('school_id')
+                    ->pluck('disk_count');
 
-                $eCS3 = DB::table('enrollment_t')
-                ->where('school_id', $school_id)
-                ->where('semester_id', 3)
-                ->count();
+                    $v = json_decode(json_encode($eCS), true);
+                    $x = $school_id;
+                }
 
-                $eCS4 = DB::table('enrollment_t')
-                ->where('school_id', $school_id)
-                ->where('semester_id', 4)
-                ->count();
-
-                $eCS5 = DB::table('enrollment_t')
-                ->where('school_id', $school_id)
-                ->where('semester_id', 5)
-                ->count();
-
-
-            }
-            // var_dump($eCS1);
-            // var_dump($school_id);
-            // var_dump($department_id);
             elseif (empty($school_id) and empty($degreeProgram_id)){
 
                 $eCS1 = DB::table('enrollment_t')
@@ -112,10 +97,9 @@ class enrollmentComparisonController extends Controller
 
 
             }
-            else
-            echo 'holla';
 
-            return view('enrollment.compare', compact('eCS1','eCS2','eCS3','eCS4','eCS5'));
+
+            return view('enrollment.compare', compact('v', 'x', 'school_id'));
 
     }
 }
