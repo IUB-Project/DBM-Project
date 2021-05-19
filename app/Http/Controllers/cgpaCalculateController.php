@@ -13,20 +13,18 @@ class cgpaCalculateController extends Controller
     {
 
         /* Input Section */
-        // $degreeProgram_id = $request->input('degreeProgram_id');
-        // $department_id = $request->input('department_id');
-        // $school_id = $request->input('school_id');
-        // $semester_id = $request->input('semester_id');
         $course_id = $request->input('course_id');
         $student_id = $request->input('student_id');
         $section_no = $request->input('section_no');
+        $semester_id = $request->input('semester_id');
 
-        /* Variables: eCS1-5 */
+        /* Analysis Algorithm */
 
         $Mid_achieved = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Mid')
         ->sum('achievedMark');
 
@@ -34,16 +32,18 @@ class cgpaCalculateController extends Controller
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Mid')
         ->sum('maxMarks');
 
         $mid_r = (($Mid_achieved/$Mid_total)*100);
-        $mid_r_c = ($mid_r/30);
+        $mid_r_c = (($mid_r/100)*30);
 
         $Final_achieved = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Final')
         ->sum('achievedMark');
 
@@ -51,16 +51,18 @@ class cgpaCalculateController extends Controller
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Final')
         ->sum('maxMarks');
 
         $Final_r = (($Final_achieved/$Final_total)*100);
-        $Final_r_c = ($Final_r/40);
+        $Final_r_c = (($Final_r/100)*40);
 
         $project_a1 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Assignment')
         ->sum('achievedMark');
 
@@ -68,12 +70,14 @@ class cgpaCalculateController extends Controller
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Assignment')
         ->sum('maxMarks');
         $project_a2 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Project')
         ->sum('achievedMark');
 
@@ -81,6 +85,7 @@ class cgpaCalculateController extends Controller
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Project')
         ->sum('maxMarks');
 
@@ -88,34 +93,41 @@ class cgpaCalculateController extends Controller
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
-        ->where('assessmentType', '	Quiz')
+        ->where('semester_id', $semester_id)
+        ->where('assessmentType', 'Quiz')
         ->sum('achievedMark');
 
         $project_t3 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Project')
-        ->where('assessmentType', '	Quiz')
+        ->where('assessmentType', 'Quiz')
         ->sum('maxMarks');
 
         $project_a4 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
-        ->where('assessmentType', '	Presentation')
+        ->where('semester_id', $semester_id)
+        ->where('assessmentType', 'Presentation')
         ->sum('achievedMark');
 
         $project_t4 = DB::table('assessment_t')
         ->where('course_id', $course_id)
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
         ->where('assessmentType', 'Project')
-        ->where('assessmentType', '	Presentation')
+        ->where('assessmentType', 'Presentation')
         ->sum('maxMarks');
 
+        $project_achieved = $project_a1+$project_a2+$project_a3+$project_a4;
+        $project_total= $project_t1+$project_t2+$project_t3+$project_t4;
+
         $project_r = (($project_achieved/$project_total)*100);
-        $project_r_c = ($project_r/30);
+        $project_r_c = (($project_r/100)*30);
 
         $total_achievedMarks =($Final_r_c + $mid_r_c + $project_r_c);
 
@@ -167,37 +179,53 @@ class cgpaCalculateController extends Controller
         else
         $grade = "No grade";
 
-        $id = DB::table('student_cgpa_t')->pluck('student_id');
+        $id1 = DB::table('evaluation_t')->pluck('student_id');
+        $id = json_decode($id1, true);
+        $degreeProgram_id1 =DB::table('courseoffered_t')->where('course_id', $course_id)->pluck('degreeProgram_id');
+        $degreeProgram_id2 = json_decode($degreeProgram_id1);
+        $degreeProgram_id =implode("",$degreeProgram_id2);
+        $department_id1 =DB::table('degreeprogram_t')->where('degreeProgram_id', $degreeProgram_id)->pluck('department_id');
+        $department_id2 = json_decode($department_id1);
+        $department_id =implode("",$department_id2);
+        $school_id1 =DB::table('department_t')->where('department_id', $department_id)->pluck('school_id');
+        $school_id2 = json_decode($school_id1);
+        $school_id =implode("",$school_id2);
+        $instructor_id1 =DB::table('section_t')->where('course_id', $course_id)->where('section_no', $section_no)->pluck('instructor_id');
+        $instructor_id2 = json_decode($instructor_id1);
+        $instructor_id =implode("",$instructor_id2);
 
-        foreach($id as $r){
-            if($student_id==$r){
-                echo 'No value';
-            }
-            else {
-                DB::table('student_cgpa_t')->insert([
+
+        if(in_array($student_id, $id)){
+        }
+            else{
+                DB::table('evaluation_t')->insert([
                     'student_id' => $student_id,
                     'course_id' => $course_id,
-                    // 'school_id' => $school_id,
+                    'school_id' => $school_id,
+                    'obtainedMarks' => $total_achievedMarks,
                     'section_no' => $section_no,
-                    // 'department_id' => $department_id,
+                    'department_id' => $department_id,
                     'gpa' => $gpa,
-                    // 'semester_id' => $semester_id,
-                    'grade' => $grade
-                    // 'degreeProgram_id' => $degreeProgram_id
+                    'semester_id' => $semester_id,
+                    'instructor_id' => $instructor_id,
+                    'grade' => $grade,
+                    'degreeProgram_id' => $degreeProgram_id
                 ]);
             }
-        }
 
 
 
 
-        $results =  DB::table('student_cgpa_t')
+
+
+
+        $results =  DB::table('evaluation_t')
                     ->where('course_id', $course_id)
                     ->where('student_id', $student_id)
                     ->where('section_no', $section_no)
                     ->get();
 
         return view('assessment.calculate', compact('results'));
-
     }
+
 }

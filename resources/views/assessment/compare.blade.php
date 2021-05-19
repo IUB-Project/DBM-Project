@@ -1,12 +1,10 @@
 @include('layouts.navbars.page_sidebar')
-  <!-- Main content -->
-  <div class="main-content" id="panel">
+<!-- Main content -->
+<div class="main-content" id="panel">
     <!-- Topnav -->
     <nav class="navbar navbar-top navbar-expand navbar-dark bg-dark border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-          </form>
           <!-- Navbar links -->
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item d-xl-none">
@@ -231,83 +229,100 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Assessment Records</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Enrollment Records</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Assessment Records</li>
+                  <li class="breadcrumb-item active" aria-current="page">Enrollemnt Records</li>
                 </ol>
               </nav>
             </div>
-            <div class="col-lg-6 col-5 text-right">
+            {{-- <div class="col-lg-6 col-5 text-right">
               <a href="#" class="btn btn-sm btn-neutral">New</a>
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
     </div>
     <!-- Page content -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <style type="text/css">
+        .dropdown-toggle{
+            height: 40px;
+            width: 420px !important;
+        }
+    </style>
     <div class="container-fluid mt--6">
       <div class="row">
         <div class="col">
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">View GPA Data</h3>
+              <h2 class="mb-0">View Enrollment Data</h2>
             </div>
             <!-- Light table -->
-            <form action = "/gpa" method = "post" style="padding-left:25px; padding-right:25px;">
+
+                <form action = "/enrollmentcomparison" method = "post" enctype="multipart/form-data" style="padding-left:25px; padding-right:25px;">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                 <table>
                     <tr>
-                      <div class="form-group mb-0" style="width: 350px">
-                        <div class="input-group input-group-alternative input-group-merge">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                          </div>
-                          <input type="text" name="course_id" class="form-control" placeholder="Enter Course ID" >
-                        </div>
-                      </div>
-                       </tr>
+                        <div class="input-daterange datepicker row align-items-center">
+                         <div class="col">
+                            <div class="form-group">
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                 </div>
+                            <input type="date" name="enrollmentDateStart" class="form-control" placeholder="Records From">
+                            </div>
+                         </div>
+                     </div>
+                            <div class="col">
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                       <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                         </div>
+                        <input type="date" name="enrollmentDateEnd" class="form-control" placeholder="To">
+                    </div>
+                </div>
+             </div>
+        </div>
+    </tr>
+                    <tr>
+                            <label>Select School :</label><br/>
+                            <select class="selectpicker" multiple data-live-search="true" name="school_id []" >
+                                @foreach ($schoolList as $key => $value)
+                                <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </tr>
                        <br/>
-                   <tr>
-                    <div class="form-group mb-0" style="width: 350px">
-                        <div class="input-group input-group-alternative input-group-merge">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                          </div>
-                          <input type="text" name="section_no" class="form-control" placeholder="Enter Section" >
-                        </div>
-                      </div>
-
+                       <br/>
+                       <tr>
+                        <label>Select Department :</label><br/>
+                        <select class="selectpicker" multiple data-live-search="true" name="department_id []" >
+                            @foreach ($departmentlist as $key => $value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
                     </tr>
-                    <br/>
-                    <tr>
-                        <div class="form-group mb-0" style="width: 350px">
-                            <div class="input-group input-group-alternative input-group-merge">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                              </div>
-                              <input type="text" name="semester_id" class="form-control" placeholder="Enter Semester No" >
-                            </div>
-                          </div>
-
-                        </tr>
-                        <br/>
-                    <tr>
-                        <div class="form-group mb-0" style="width: 350px">
-                            <div class="input-group input-group-alternative input-group-merge">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                              </div>
-                              <input type="text" name="student_id" class="form-control" placeholder="Enter Student ID">
-                            </div>
-                          </div>
-                        </tr>
-               <br/>
-
+                   <br/>
+                   <br/>
                    <tr>
+                    <label>Select Degree Program :</label><br/>
+                    <select class="selectpicker" multiple data-live-search="true" name="degreeProgram_id []" >
+                        @foreach ($degreeProgramlist as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                </tr>
+               <br/>
+               <br/>
+                    <tr>
                       <td>
                         <button class="btn btn-primary" type="submit">Search</button>
 
@@ -316,40 +331,110 @@
                 </table>
                 <br />
              </form>
+          </div>
+        </div>
+      </div>
 
-     @if(empty($results))
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').selectpicker();
+        });
+    </script>
+
+
+
+     @if(empty($v))
+
+
         @else
-            <div class="table-responsive">
-            <table class="table align-items-center">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col" >Student ID</th>
-                    <th scope="col" >Grade</th>
-                    <th scope="col" >GPA</th>
-                </tr>
-                @foreach ($results as $r)
-                <tr>
-                <td>{{ $r->student_id }}</td>
-                <td>{{ $r->grade }}</td>
-                <td>{{ $r->gpa }}</td>
-                </tr>
-                @endforeach
-            </thead>
-                </table>
+        <script>
+      var v1 = <?php echo json_encode($v);?>;
+      var v2 = <?php echo json_encode($x);?>;
+      </script>
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">
+        <!-- Title -->
+        <h5 class="h3 mb-0">Comparison Records</h5>
+        </div>
+        <!-- Card body -->
+            <div class="card-body">
+        <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="new" class="chart-canvas"></canvas>
+        </div>
+        </div>
+        </div>
+
             @endif
          </div>
-        {{-- @endif --}}
+
+
+        </body>
 
 
   <!-- Argon Scripts -->
+
   <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- Optional JS -->
+  <script src="../../assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <!-- Docs JS -->
+  <script src="../../assets/vendor/anchor-js/anchor.min.js"></script>
+  <script src="../../assets/vendor/clipboard/dist/clipboard.min.js"></script>
+  <script src="../../assets/vendor/holderjs/holder.min.js"></script>
+  <script src="../../assets/vendor/prismjs/prism.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
-</body>
+  <script src="../../assets/js/argon.min.js?v=1.2.0"></script>
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    var BarsChart = (function() {
+
+      var $chart = $('#new');
+
+
+
+      function initChart($chart) {
+
+          // Create chart
+          var ordersChart = new Chart($chart, {
+              type: 'bar',
+              data: {
+                  labels: v2,
+                  datasets: [{
+                      label: 'Enrollment Count',
+                      data: v1
+                  }]
+              }
+          });
+
+          // Save to jQuery object
+          $chart.data('chart', ordersChart);
+      }
+
+
+      // Init chart
+      if ($chart.length) {
+          initChart($chart);
+      }
+
+  })();
+  </script>
+        </div>
+
 
 </html>
