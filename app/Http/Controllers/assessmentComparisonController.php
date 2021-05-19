@@ -14,45 +14,44 @@ class assessmentComparisonController extends Controller
 
 
         $value = $request->all();
+        //var_dump($value);
 
-        if (empty($value['department_id_']) and empty($value['degreeProgram_id_'])) {
+        if (!empty($value['school_id_'])) {
 
 
-            $eCS = DB::table('enrollment_t')
-                ->select(DB::raw('count(*) as  enrollment_count'))
-                ->whereBetween('enrollmentDate', [$value['enrollmentDateStart'], $value['enrollmentDateEnd']])
+            $avg_r = DB::table('evaluation_t')
+                ->select(DB::raw('round(AVG(gpa),2) as avg_gpa'))
                 ->whereIn('school_id', $value['school_id_'])
                 ->groupBy('school_id')
-                ->pluck('enrollment_count');
+                ->pluck('avg_gpa');
 
-            $v = json_decode(json_encode($eCS), true);
+
+            $v = json_decode(json_encode($avg_r), true);
             $x = $value['school_id_'];
         } elseif (empty($value['school_id_']) and empty($value['degreeProgram_id_'])) {
 
-            $eCS = DB::table('enrollment_t')
-                ->select(DB::raw('count(*) as  enrollment_count'))
-                ->whereBetween('enrollmentDate', [$value['enrollmentDateStart'], $value['enrollmentDateEnd']])
+            $avg_r = DB::table('evaluation_t')
+                ->select(DB::raw('round(AVG(gpa),2) as avg_gpa'))
                 ->whereIn('department_id', $value['department_id_'])
                 ->groupBy('department_id')
-                ->pluck('enrollment_count');
+                ->pluck('avg_gpa');
 
-            $v = json_decode(json_encode($eCS), true);
+            $v = json_decode(json_encode($avg_r), true);
             $x = $value['department_id_'];
         } elseif (empty($value['school_id_']) and empty($value['department_id_'])) {
 
-            $eCS = DB::table('enrollment_t')
-                ->select(DB::raw('count(*) as  enrollment_count'))
-                ->whereBetween('enrollmentDate', [$value['enrollmentDateStart'], $value['enrollmentDateEnd']])
+            $avg_r = DB::table('evaluation_t')
+                ->select(DB::raw('round(AVG(gpa),2) as avg_gpa'))
                 ->whereIn('degreeProgram_id', $value['degreeProgram_id_'])
                 ->groupBy('degreeProgram_id')
-                ->pluck('enrollment_count');
+                ->pluck('avg_gpa');
 
-            $v = json_decode(json_encode($eCS), true);
+            $v = json_decode(json_encode($avg_r), true);
             $x = $value['degreeProgram_id_'];
         }
 
 
 
-        return view('enrollment.compare', compact('v', 'x'));
+        return view('assessment.compare', compact('v', 'x'));
     }
 }

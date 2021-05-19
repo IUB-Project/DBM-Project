@@ -45,5 +45,8 @@ class AppServiceProvider extends ServiceProvider
         $schoolList = DB::table('school_t')->pluck("schoolName","school_id");
         view()->share('schoolList', $schoolList);
 
+        $employeelist = DB::table('employee_t')->get();
+        view()->share('employeelist', $employeelist);
+
     }
 }
