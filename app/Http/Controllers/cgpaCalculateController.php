@@ -102,7 +102,6 @@ class cgpaCalculateController extends Controller
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
         ->where('semester_id', $semester_id)
-        ->where('assessmentType', 'Project')
         ->where('assessmentType', 'Quiz')
         ->sum('maxMarks');
 
@@ -119,7 +118,6 @@ class cgpaCalculateController extends Controller
         ->where('student_id', $student_id)
         ->where('section_no', $section_no)
         ->where('semester_id', $semester_id)
-        ->where('assessmentType', 'Project')
         ->where('assessmentType', 'Presentation')
         ->sum('maxMarks');
 
@@ -179,6 +177,148 @@ class cgpaCalculateController extends Controller
         else
         $grade = "No grade";
 
+        $CO1_ACH = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO1')
+        ->sum('achievedMark');
+
+        $CO1_MAX = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO1')
+        ->sum('maxMarks');
+
+        $CO2_ACH = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO2')
+        ->sum('achievedMark');
+
+        $CO2_MAX = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO2')
+        ->sum('maxMarks');
+
+        $CO3_ACH = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO3')
+        ->sum('achievedMark');
+
+        $CO3_MAX = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO3')
+        ->sum('maxMarks');
+
+        $CO4_ACH = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO4')
+        ->sum('achievedMark');
+
+        $CO4_MAX = DB::table('assessment_t')
+        ->where('course_id', $course_id)
+        ->where('student_id', $student_id)
+        ->where('section_no', $section_no)
+        ->where('semester_id', $semester_id)
+        ->where('co_id', 'CO4')
+        ->sum('maxMarks');
+
+        if(!empty($CO1_ACH)){
+            $CO_R1 = (($CO1_ACH/$CO1_MAX)*100);
+
+        if($CO_R1 >= 40){
+            $CO1R = 'YES';
+            $PO2 = 'YES';
+        }
+        else{
+            $CO1R = 'NO';
+            $PO2 = 'NO';
+        }
+        }
+        else{
+            $CO1R = 'NO';
+            $PO2 = 'NO';
+        }
+
+        if(!empty($CO2_ACH)){
+            $CO_R2 = (($CO2_ACH/$CO2_MAX)*100);
+            if($CO_R2 >= 40){
+                $CO2R = 'YES';
+                $PO3 = 'YES';
+            }
+            else{
+                $CO2R = 'NO';
+                $PO3 = 'NO';
+            }
+        }
+        else{
+            $CO2R = 'NO';
+            $PO3 = 'NO';
+        }
+
+        if(!empty($CO3_ACH)){
+            $CO_R3 = (($CO3_ACH/$CO3_MAX)*100);
+            if($CO_R3 >= 40){
+                $CO3R = 'YES';
+                $PO4 = 'YES';
+            }
+            else{
+                $CO3R = 'NO';
+                $PO4 = 'NO';
+            }
+        }
+        else{
+            $CO3R = 'NO';
+            $PO4 = 'NO';
+        }
+
+        if(!empty($CO2_ACH)){
+            $CO_R4 = (($CO4_ACH/$CO4_MAX)*100);
+            if($CO_R4 >= 40){
+                $CO4R = 'YES';
+                $PO6 = 'YES';
+            }
+
+            else{
+                $CO4R = 'NO';
+                $PO6 = 'NO';
+            }
+        }
+        else{
+            $CO4R = 'NO';
+            $PO6 = 'NO';
+        }
+
+        $CO_ACH = $CO1_ACH + $CO2_ACH + $CO3_ACH + $CO4_ACH;
+        $CO_MAX = $CO1_MAX + $CO2_MAX + $CO3_MAX + $CO4_MAX;
+
+        $CO = (($CO1_ACH/$CO1_MAX)*100);
+        if($CO >= 40){
+            $CO_R = 'YES';
+        }
+        else{
+            $CO_R = 'NO';
+        }
+
+
         $id1 = DB::table('evaluation_t')->pluck('student_id');
         $id = json_decode($id1, true);
         $degreeProgram_id1 =DB::table('courseoffered_t')->where('course_id', $course_id)->pluck('degreeProgram_id');
@@ -202,6 +342,15 @@ class cgpaCalculateController extends Controller
                     'student_id' => $student_id,
                     'course_id' => $course_id,
                     'school_id' => $school_id,
+                    'co1_achieved' => $CO1R,
+                    'co2_achieved' => $CO2R,
+                    'co3_achieved' => $CO3R,
+                    'co4_achieved' => $CO4R,
+                    'po2_achieved' => $PO2,
+                    'po3_achieved' => $PO3,
+                    'po4_achieved' => $PO4,
+                    'po6_achieved' => $PO6,
+                    'co_achieved' => $CO_R,
                     'obtainedMarks' => $total_achievedMarks,
                     'section_no' => $section_no,
                     'department_id' => $department_id,
