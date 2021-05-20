@@ -61,6 +61,16 @@
                                 {{ __('View Assessment Data') }}
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('assessment-calculate') }}">
+                                {{ __('Assessment Results') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('assessment-compare') }}">
+                                {{ __('Assessment Data Comparison') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

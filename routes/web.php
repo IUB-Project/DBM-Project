@@ -46,9 +46,11 @@ Route::group(['middleware' => 'auth'], function () {
      Route::post('/assessmentview', [App\Http\Controllers\assessmentViewController::class, 'view'])->name('av');
      Route::get('/obe', [App\Http\Controllers\obeController::class, 'view'])->name('obe');
      Route::post('/gpa', [App\Http\Controllers\cgpaCalculateController::class, 'view'])->name('gpa');
+     Route::post('/coview', [App\Http\Controllers\coViewController::class, 'view'])->name('coview');
      Route::post('/gpaview', [App\Http\Controllers\assessmentComparisonController::class, 'view'])->name('gpaview');
      Route::post('/enrollmentcomparison', [App\Http\Controllers\enrollmentComparisonController::class, 'view'])->name('ecv');
 	 Route::get('assessment/insert', function () {return view('assessment.insert');})->name('assessment-insert');
+     Route::get('co/view', function () {return view('CO_PLO.view');})->name('co-view');
      Route::get('assessment/view', function () {return view('assessment.view');})->name('assessment-view');
      Route::get('assessment/calculate', function () {return view('assessment.calculate');})->name('assessment-calculate');
      Route::get('assessment/compare', function () {return view('assessment.compare');})->name('assessment-compare');

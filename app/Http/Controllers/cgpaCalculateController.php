@@ -290,7 +290,7 @@ class cgpaCalculateController extends Controller
             $PO4 = 'NO';
         }
 
-        if(!empty($CO2_ACH)){
+        if(!empty($CO4_ACH)){
             $CO_R4 = (($CO4_ACH/$CO4_MAX)*100);
             if($CO_R4 >= 40){
                 $CO4R = 'YES';
@@ -310,7 +310,7 @@ class cgpaCalculateController extends Controller
         $CO_ACH = $CO1_ACH + $CO2_ACH + $CO3_ACH + $CO4_ACH;
         $CO_MAX = $CO1_MAX + $CO2_MAX + $CO3_MAX + $CO4_MAX;
 
-        $CO = (($CO1_ACH/$CO1_MAX)*100);
+        $CO = (($CO_ACH/$CO_MAX)*100);
         if($CO >= 40){
             $CO_R = 'YES';
         }
@@ -330,7 +330,7 @@ class cgpaCalculateController extends Controller
         $school_id1 =DB::table('department_t')->where('department_id', $department_id)->pluck('school_id');
         $school_id2 = json_decode($school_id1);
         $school_id =implode("",$school_id2);
-        $instructor_id1 =DB::table('section_t')->where('course_id', $course_id)->where('section_no', $section_no)->pluck('instructor_id');
+        $instructor_id1 =DB::table('section_t')->where('course_id', $course_id)->where('section_no', $section_no)->where('semester_id', $semester_id)->pluck('instructor_id');
         $instructor_id2 = json_decode($instructor_id1);
         $instructor_id =implode("",$instructor_id2);
 
