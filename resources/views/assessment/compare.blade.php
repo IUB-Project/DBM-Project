@@ -450,7 +450,7 @@
                     data: {
                         labels: v2,
                         datasets: [{
-                            label: 'Enrollment Count',
+                            label: 'Avg. GPA: ',
                             data: v1
                         }]
                     }
