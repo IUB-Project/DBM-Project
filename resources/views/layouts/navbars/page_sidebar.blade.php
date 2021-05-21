@@ -101,10 +101,31 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{ route('table') }}">
-                <i class="fas fa-archive text-grey"></i> {{ __('Course Report') }}
+            <li class="nav-item">
+                <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <i class="fas fa-archive" style="color: #525f7f;"></i>
+                    <span class="nav-link-text" style="color: #525f7f">{{ __('CO-PLO Records') }}</span>
                 </a>
+
+                <div class="collapse show" id="navbar-examples">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('co-view') }}">
+                                {{ __('View CO-PLO Data') }}
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('enrollment-view') }}">
+                                {{ __('View Enrollment Data') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('enrollment-compare') }}">
+                                {{ __('View Enrollment Comparison') }}
+                            </a>
+                        </li> --}}
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('table') }}">

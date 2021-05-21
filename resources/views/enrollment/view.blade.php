@@ -317,6 +317,7 @@
                 <td>{{$enrollmentViewCount}}</td>
             </thead>
                 </table>
+            </div>
             @endif
          </div>
         {{-- @endif --}}

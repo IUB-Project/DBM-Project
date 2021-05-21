@@ -274,11 +274,11 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h2 class="mb-0">View Course Outcome</h2>
+                        <h2 class="mb-0">Compare Assessment Data</h2>
                     </div>
                     <!-- Light table -->
 
-                    <form action="/coview" method="post" enctype="multipart/form-data"
+                    <form action="/cocompare" method="post" enctype="multipart/form-data"
                         style="padding-left:25px; padding-right:25px;">
                         <input type="hidden" name="_token"
                             value="<?php echo csrf_token(); ?>">
@@ -286,10 +286,33 @@
                             <tr>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label>Select Course :</label><br />
+                                        <label>Select School :</label><br />
                                         <select class="selectpicker" multiple data-live-search="true"
-                                            name="course_id []">
-                                            @foreach ($courselist as $key => $value)
+                                            name="school_id []">
+                                            @foreach ($schoolList as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label>Select Department :</label><br />
+                                        <select class="selectpicker" multiple data-live-search="true"
+                                            name="department_id []">
+                                            @foreach ($departmentlist as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </tr>
+                            <br />
+                            <tr>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label>Select Degree Program :</label><br />
+                                        <select class="selectpicker" multiple data-live-search="true"
+                                            name="degreeProgram_id []">
+                                            @foreach ($degreeProgramlist as $key => $value)
                                                 <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
@@ -310,18 +333,20 @@
                             <tr>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label>Section :</label><br />
-                                        <div class="form-group mb-0" style="width: 420px">
-                                            <div class="input-group input-group-alternative input-group-merge">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-
-                                            </div>
-
-                                              <input type="text" name="section_no" class="form-control" placeholder="Enter Section" >
-                                            </div>
-                                          </div>
+                                        <label>Select Course :</label><br />
+                                        <select class="selectpicker" multiple data-live-search="true"
+                                            name="course_id []">
+                                            @foreach ($courselist as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                    <div class="col">
+
+
+                                        
+                                    </div>
+                                </div>
                             </tr>
                             <br />
 
@@ -335,7 +360,9 @@
                         </table>
                         <br />
                     </form>
-
+                </div>
+            </div>
+        </div>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -346,67 +373,31 @@
 
 
 
-        @if (empty($CO1_ATTEMPTS))
+        @if (empty($v))
 
 
         @else
+            <script>
+                var v1 = <?php echo json_encode($v); ?>;                var v2 = <?php echo json_encode($x); ?>;
+            </script>
+            <div class="card">
 
-        <div class="table-responsive">
-            <table class="table align-items-center">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col" >CO</th>
-                    <th scope="col" >Number of Students</th>
-                    <th scope="col" >Successfully Achieved</th>
-                    <th scope="col" >Successfully Achieved (%)</th>
-                    <th scope="col" >Failed to Achieve</th>
-                    <th scope="col" >Failed to Achieve (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">CO1</th>
-                <td>{{$CO1_ATTEMPTS}}</td>
-                <td>{{$CO1_SCORE}}</td>
-                <td>{{$CO1_SUCCESS}}</td>
-                <td>{{$CO1_ATTEMPTS-$CO1_SCORE}}</td>
-                <td>{{$CO1_FAILED}}</td>
-                </tr>
-                <tr>
-                <th scope="row">CO2</th>
-                <td>{{$CO2_ATTEMPTS}}</td>
-                <td>{{$CO2_SCORE}}</td>
-                <td>{{$CO2_SUCCESS}}</td>
-                <td>{{$CO2_ATTEMPTS-$CO2_SCORE}}</td>
-                <td>{{$CO2_FAILED}}</td>
-                </tr>
-                <tr>
-                <th scope="row">CO3</th>
-                <td>{{$CO3_ATTEMPTS}}</td>
-                <td>{{$CO3_SCORE}}</td>
-                <td>{{$CO3_SUCCESS}}</td>
-                <td>{{$CO3_ATTEMPTS-$CO3_SCORE}}</td>
-                <td>{{$CO3_FAILED}}</td>
-                </tr>
-                <tr>
-                <th scope="row">CO4</th>
-                <td>{{$CO4_ATTEMPTS}}</td>
-                <td>{{$CO4_SCORE}}</td>
-                <td>{{$CO4_SUCCESS}}</td>
-                <td>{{$CO4_ATTEMPTS-$CO4_SCORE}}</td>
-                <td>{{$CO4_FAILED}}</td>
-                </tr>
-            </tbody>
-                </table>
+                <!-- Card header -->
+                <div class="card-header">
+                    <!-- Title -->
+                    <h5 class="h3 mb-0">Comparison Records</h5>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="chart">
+                        <!-- Chart wrapper -->
+                        <canvas id="new" class="chart-canvas"></canvas>
+                    </div>
+                </div>
             </div>
-
-
 
         @endif
     </div>
-</div>
-</div>
-</div>
 
 
     </body>
@@ -439,40 +430,40 @@
 
 
 
-    {{-- // <script type="text/javascript">
-    //     var BarsChart = (function() {
+    <script type="text/javascript">
+        var BarsChart = (function() {
 
-    //         var $chart = $('#new');
-
-
-
-    //         function initChart($chart) {
-
-    //             // Create chart
-    //             var ordersChart = new Chart($chart, {
-    //                 type: 'bar',
-    //                 data: {
-    //                     labels: v2,
-    //                     datasets: [{
-    //                         label: 'Avg. GPA',
-    //                         data: v1
-    //                     }]
-    //                 }
-    //             });
-
-    //             // Save to jQuery object
-    //             $chart.data('chart', ordersChart);
-    //         }
+            var $chart = $('#new');
 
 
-    //         // Init chart
-    //         if ($chart.length) {
-    //             initChart($chart);
-    //         }
 
-    //     })();
+            function initChart($chart) {
 
-    // </script> --}}
+                // Create chart
+                var ordersChart = new Chart($chart, {
+                    type: 'bar',
+                    data: {
+                        labels: v2,
+                        datasets: [{
+                            label: 'Avg. GPA',
+                            data: v1
+                        }]
+                    }
+                });
+
+                // Save to jQuery object
+                $chart.data('chart', ordersChart);
+            }
+
+
+            // Init chart
+            if ($chart.length) {
+                initChart($chart);
+            }
+
+        })();
+
+    </script>
 </div>
 
 
