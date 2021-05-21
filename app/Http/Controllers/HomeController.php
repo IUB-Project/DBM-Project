@@ -20,11 +20,12 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
 
-     
+
 
 
     public function index()
     {
-        return view('dashboard');
+        // return view('dashboard');
+        return view('assessment.insert');
     }
 }

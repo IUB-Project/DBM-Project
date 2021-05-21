@@ -114,12 +114,12 @@
                                 {{ __('View CO-PLO Data') }}
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('enrollment-view') }}">
-                                {{ __('View Enrollment Data') }}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('co-compare') }}">
+                                {{ __('View CO-PLO Comparison') }}
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('enrollment-compare') }}">
                                 {{ __('View Enrollment Comparison') }}
                             </a>
